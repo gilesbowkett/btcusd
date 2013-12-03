@@ -8,7 +8,7 @@ class File
   end
 end
 
-@price = JSON.parse(RestClient.get("http://bitcoincharts.com/t/weighted_prices.json"))["USD"]["24h"]
+@price = JSON.parse(RestClient.get("http://api.bitcoincharts.com/v1/weighted_prices.json"))["USD"]["24h"]
 
 File.open(File.here("/public/index.html"), "w") do |file|
   file.puts ERB.new(File.read(File.here("/template.erb"))).result(binding)
